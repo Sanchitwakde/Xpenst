@@ -13,4 +13,39 @@ import Settings from './pages/Settings';
 function AppShell(){
     const location = useLocation();
     const [sidebarOpen, setSidebarOpen] = useState(false);
+
+    const handleUtilityClick = (label) => {
+        console.info(`${label} is not connected yet.`);
+    }
+    return (
+        <div className="app-shell">
+            <Sidebar
+                isOpen={sidebarOpen}
+                onClose = {() => setSidebarOpen(false)}
+                onUtitlityClick={handleUtilityClick}
+            />
+
+        <div className="app-main">
+            <Navbar onMenuToggle ={() => setSidebarOpen(true)} />
+
+            <main className="app-content">
+                <div key={location.pathname} className = "page-shell page-fade">
+                    <Routes>
+                        <Route path="/" element={<Navigate to="/dashboard" replace/>} />
+                        <Route path = "/dashboard" element={<Dashboard />} />
+                        <Route path = "/expenses" element={<Expenses />} />
+                        <Route path = "/categories" element={<Budgets />}  />
+                        <Route path = "/budgets" element={<Budgets />} />
+                        <Route path = "/goals" element={<Budgets />} />
+                        <Route path = "/analytics" element={<Analytics />} />
+                        <Route path = "/settings" element = {<Analytics />} />
+                    </Routes>
+                </div>
+            </main>
+        </div>
+        </div>
+            );
 }
+export default function App(){
+            return <AppShell />;
+        }
