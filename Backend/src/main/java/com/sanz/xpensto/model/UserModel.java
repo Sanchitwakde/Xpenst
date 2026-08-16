@@ -1,6 +1,7 @@
 package com.sanz.xpensto.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,6 +12,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,16 +31,19 @@ public class UserModel{
     private String name;
 
     @Column(nullable = false, unique = true)
-    @Email
+    @Email(message = "Email must be valid")
+    @NotBlank(message = "Email is required")
     private String email;
 
     @Column(nullable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @NotBlank(message = "Password is required")
     private String password;
 
     private String role; // to set roles like admin/user later on
     private LocalDateTime createdAt;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ExpenseModel> expenses = new ArrayList<>();
 
