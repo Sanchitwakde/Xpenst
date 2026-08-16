@@ -9,6 +9,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Getter; //Lombok is used to remove the get and set boilerplate
 import lombok.Setter;
 import java.time.LocalDate;
@@ -22,10 +25,19 @@ public class ExpenseModel {
     @Id // to set primary key
     @GeneratedValue(strategy = GenerationType.IDENTITY) // to auto generate id's
     private long id;
+
+    @NotNull(message = "Amount is required")
+    @DecimalMin(value = "0.0", inclusive = false, message = "Amount must be greater than 0")
     private double amount;
+
+    @NotBlank(message = "Item is required")
     private String item;
+
+    @NotBlank(message = "Category is required")
     private String category;
+    @NotNull(message = "Date is required")
     private LocalDate date; // date of purchase
+
     private LocalTime createdAt; // time at which the expense was created (for db)
 
     @ManyToOne
@@ -44,16 +56,9 @@ public class ExpenseModel {
     public ExpenseModel() { //empty constructor so that jpa can fill the fields
     }
 
-    //getter methods to read values
-    //setter methods to update values
+
     @PrePersist
     public void prePersist(){
         this.createdAt = LocalTime.now();
-    }
-    public Long getId(){
-        return id;
-    }
-    public void setId(Long id){
-        this.id = id;
     }
 }
