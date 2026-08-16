@@ -29,25 +29,31 @@ public class UserService {
     }
 
     public UserModel updateUser(Long id, UserModel updatedUser) {
-        return userRepo.findById(id)
-                .map(user -> {
-                    user.setName(updatedUser.getName());
-                    user.setEmail(updatedUser.getEmail());
-
-                    if (updatedUser.getPassword() != null && !updatedUser.getPassword().isBlank()) {
-                        user.setPassword(updatedUser.getPassword());
-                    }
-
-                    if (updatedUser.getRole() != null && !updatedUser.getRole().isBlank()) {
-                        user.setRole(updatedUser.getRole());
-                    }
-
-                    return userRepo.save(user);
-                })
+        UserModel user = userRepo.findById(id)
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+
+        if (userRepo.existsByEmailAndIdNot(updatedUser.getEmail(), id)) {
+            throw new RuntimeException("Another user already exists with email: " + updatedUser.getEmail());
+        }
+
+        user.setName(updatedUser.getName());
+        user.setEmail(updatedUser.getEmail());
+
+        if (updatedUser.getPassword() != null && !updatedUser.getPassword().isBlank()) {
+            user.setPassword(updatedUser.getPassword());
+        }
+
+        if (updatedUser.getRole() != null && !updatedUser.getRole().isBlank()) {
+            user.setRole(updatedUser.getRole());
+        }
+
+        return userRepo.save(user);
     }
 
     public void deleteUser(Long id) {
+        if(!userRepo.existsById(id)){
+            throw new RuntimeException("User not found with id: " + id);
+        }
         userRepo.deleteById(id);
     }
 }
