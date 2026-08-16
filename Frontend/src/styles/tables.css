@@ -1,0 +1,110 @@
+.table-wrap {
+    display: grid;
+    gap: 1rem;
+}
+
+.table-scroll {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 840px;
+}
+
+.table th,
+.table td {
+    text-align: left;
+    padding: 1rem 0.9rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    vertical-align: middle;
+}
+
+.table th {
+    color: var(--muted);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.table tbody tr {
+    transition: background var(--transition);
+}
+
+.table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.table__title {
+    display: grid;
+    gap: 0.25rem;
+}
+
+.table__title span {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.amount-cell {
+    font-weight: 600;
+}
+
+.sortable {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: inherit;
+}
+
+.table-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 84px;
+    padding: 0.45rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.82rem;
+    border: 1px solid transparent;
+}
+
+.status-badge--paid {
+    color: var(--success);
+    background: rgba(52, 211, 153, 0.12);
+    border-color: rgba(52, 211, 153, 0.18);
+}
+
+.status-badge--pending,
+.status-badge--scheduled {
+    color: var(--warning);
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.18);
+}
+
+.status-badge--overdue {
+    color: #ffc0cb;
+    background: rgba(251, 113, 133, 0.12);
+    border-color: rgba(251, 113, 133, 0.18);
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.pagination p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.pagination__actions {
+    display: flex;
+    gap: 0.75rem;
+}

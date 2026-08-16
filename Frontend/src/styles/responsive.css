@@ -1,0 +1,145 @@
+@media (max-width: 1320px) {
+    .stats-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1120px) {
+    .hero,
+    .chart-grid,
+    .chart-grid--wide,
+    .summary-strip,
+    .filter-bar {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .navbar__right {
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .navbar__search {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 900px) {
+    .app-main {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        transition: transform var(--transition);
+        box-shadow: var(--shadow);
+    }
+
+    .sidebar.is-open {
+        transform: translateX(0);
+    }
+
+    .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 35;
+        background: rgba(3, 8, 18, 0.56);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity var(--transition);
+    }
+
+    .sidebar-overlay.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .sidebar__close,
+    .navbar__menu {
+        display: inline-grid;
+    }
+
+    .navbar__left {
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 760px) {
+    .app-content {
+        padding: 1rem 1rem 5rem;
+    }
+
+    .stats-grid,
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+
+    .mobile-only {
+        display: block;
+    }
+
+    .mobile-fab {
+        display: inline-grid;
+        place-items: center;
+    }
+
+    .profile-chip__meta {
+        display: none;
+    }
+
+    .summary-strip {
+        grid-template-columns: 1fr;
+    }
+
+    .info-tile--wide,
+    .toggle-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 560px) {
+    .hero {
+        padding: 1.2rem;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .section-header,
+    .page-actions,
+    .pagination,
+    .expense-card__top {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .modal__dialog {
+        width: 100%;
+        border-radius: 22px;
+    }
+}
