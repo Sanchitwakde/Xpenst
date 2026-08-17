@@ -76,7 +76,7 @@ export default function Navbar({ onMenuToggle }) {
                 <button type="button" className="profile-chip">
                     <span className="profile-chip__avatar">RS</span>
                     <span className="profile-chip__meta">
-            <strong>Riya Sharma</strong>
+            <strong>Sanz</strong>
             <small>Premium Plan</small>
           </span>
                     <ChevronDown size={16} />

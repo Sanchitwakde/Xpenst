@@ -3,8 +3,8 @@ import { useState } from 'react';
 
 export default function Settings() {
     const [form, setForm] = useState({
-        fullName: 'Riya Sharma',
-        email: 'riya@xpensto.app',
+        fullName: 'Sanz',
+        email: 'Sanz@xpensto.app',
         currency: 'INR',
         theme: 'dark',
         notifications: true,

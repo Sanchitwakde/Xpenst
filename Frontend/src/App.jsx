@@ -21,8 +21,8 @@ function AppShell(){
         <div className="app-shell">
             <Sidebar
                 isOpen={sidebarOpen}
-                onClose = {() => setSidebarOpen(false)}
-                onUtitlityClick={handleUtilityClick}
+                onClose={() => setSidebarOpen(false)}
+                onUtilityClick={handleUtilityClick}
             />
 
         <div className="app-main">
@@ -34,11 +34,11 @@ function AppShell(){
                         <Route path="/" element={<Navigate to="/dashboard" replace/>} />
                         <Route path = "/dashboard" element={<Dashboard />} />
                         <Route path = "/expenses" element={<Expenses />} />
-                        <Route path = "/categories" element={<Budgets />}  />
+                        <Route path = "/categories" element={<Categories />}  />
                         <Route path = "/budgets" element={<Budgets />} />
-                        <Route path = "/goals" element={<Budgets />} />
+                        <Route path = "/goals" element={<Goals />} />
                         <Route path = "/analytics" element={<Analytics />} />
-                        <Route path = "/settings" element = {<Analytics />} />
+                        <Route path = "/settings" element = {<Settings />} />
                     </Routes>
                 </div>
             </main>

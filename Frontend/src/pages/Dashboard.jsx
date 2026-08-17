@@ -3,7 +3,7 @@ import {
     ArrowUpCircle,
     Landmark,
     PiggyBank,
-    ShieldDollar,
+    Shield,
     Target,
     Wallet,
 } from 'lucide-react';
@@ -82,7 +82,7 @@ export default function Dashboard() {
                 tone: 'secondary',
             },
             {
-                icon: ShieldDollar,
+                icon: Shield,
                 title: 'Budget Remaining',
                 value: formatCurrency(summary.budgetRemaining),
                 change: `${summary.budgetChange || '+0%'} remaining`,
